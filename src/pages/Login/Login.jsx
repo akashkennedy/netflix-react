@@ -3,6 +3,7 @@ import "./Login.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login, signup } from "../../../firebase";
+import netflix_spinner from "../../assets/netflix_spinner.gif";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -10,9 +11,11 @@ const Login = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const user_auth = async (e) => {
     e.preventDefault();
+    setLoading(true);
     if (signState === "Sign In") {
       await login(email, password);
       navigate("/");
@@ -20,9 +23,14 @@ const Login = () => {
       await signup(name, email, password);
       navigate("/login");
     }
+    setLoading(false);
   };
 
-  return (
+  return loading ? (
+    <div className="login-spinner">
+      <img src={netflix_spinner} />
+    </div>
+  ) : (
     <div className="login">
       <img src={logo} alt="Logo" className="logo" />
       <div className="login-form">
