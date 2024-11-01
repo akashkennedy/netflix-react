@@ -1,5 +1,6 @@
 import "./Home.css";
 import Navbar from "../../components/Navbar/Navbar.jsx";
+import Footer from "../../components/Footer/Footer.jsx";
 import hero_banner from "../../assets/hero_banner.jpg";
 import hero_title from "../../assets/hero_title.png";
 import play_icon from "../../assets/play_icon.png";
@@ -32,6 +33,13 @@ const Home = () => {
           <TitleCards />
         </div>
       </div>
+      <div className="more-cards">
+        <TitleCards title={"Blockbuster Movies"} />
+        <TitleCards title={"Only on Netflix"} />
+        <TitleCards title={"Upcoming"} />
+        <TitleCards title={"Top Picks for You"} />
+      </div>
+      <Footer />
     </div>
   );
 };
